@@ -20,16 +20,15 @@ const argv = yargs
     .alias('help', 'h')
     .argv
 
-let encodedReqCurrency = encodeURIComponent(argv.reqc);
-let encodedResCurrency = encodeURIComponent(argv.resc);
+let reqCurrency = (argv.reqc);
+let resCurrency = (argv.resc).replace(/\s*,\s*/g, ",");
 
 // console.log(argv);
 
 request({
-    url: `https://min-api.cryptocompare.com/data/price?fsym=${encodedReqCurrency}&tsyms=${encodedResCurrency}`,
+    url: `https://min-api.cryptocompare.com/data/price?fsym=${reqCurrency}&tsyms=${resCurrency}`,
     json: true
 }, (error, response, body) => {
-
     console.log(body);
 });
 
