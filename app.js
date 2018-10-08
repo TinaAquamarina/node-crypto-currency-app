@@ -30,5 +30,3 @@ request({
 }, (error, response, body) => {
     console.log(body);
 });
-
-//statusCode
