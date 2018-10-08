@@ -14,18 +14,18 @@ const argv = yargs
             alias: 'rescurrency',
             describe: 'Response currency',
             string: true
-        }
+        },
 
     })
     .help()
     .alias('help', 'h')
     .argv
 
-let reqCurrency = argv.reqc;
+let reqCurrency = (argv.reqc).replace(/\s*,\s*/g, ",");
 let resCurrency = (argv.resc).replace(/\s*,\s*/g, ",");
 
 request({
-    url: `https://min-api.cryptocompare.com/data/price?fsym=${reqCurrency}&tsyms=${resCurrency}`,
+    url: `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${reqCurrency}&tsyms=${resCurrency}`,
     json: true
 }, (error, response, body) => {
     console.log(body);
