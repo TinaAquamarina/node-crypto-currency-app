@@ -15,15 +15,14 @@ const argv = yargs
             describe: 'Response currency',
             string: true
         }
+
     })
     .help()
     .alias('help', 'h')
     .argv
 
-let reqCurrency = (argv.reqc);
+let reqCurrency = argv.reqc;
 let resCurrency = (argv.resc).replace(/\s*,\s*/g, ",");
-
-// console.log(argv);
 
 request({
     url: `https://min-api.cryptocompare.com/data/price?fsym=${reqCurrency}&tsyms=${resCurrency}`,
